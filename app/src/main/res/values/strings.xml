@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">LeonoApp</string>
+    <string name="contador_ki_texto">KI=</string>
+    <string name="incrementa_ki">+</string>
+    <string name="decrementa_ki">-</string>
+    <string name="dado_20">Dado20</string>
+    <string name="dado_20_texto">7Strength+4Proficiency=</string>
+    <string name="dado_8">Dado8</string>
+    <string name="dado_texto_prof">7Strength+IceDamage(IceFang)=</string>
+    <string name="dado_6">Dado6=</string>
+    <string name="contador_max_hp">Max HP =</string>
+    <string name="contador_actual_hp">HP=</string>
+    <string name="daño_cura">Daño/Cura</string>
 </resources>

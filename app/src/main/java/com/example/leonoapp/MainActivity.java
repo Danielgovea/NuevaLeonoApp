@@ -1,6 +1,7 @@
 package com.example.leonoapp;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -9,7 +10,7 @@ import android.widget.TextView;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class MainActivity extends Activity {
-
+    public MediaPlayer mplayer;
     public int contadorki;
     public int maxhp;
     public int hpactual;
@@ -18,24 +19,21 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        maxhp = 52;
-        contadorki = 0;
+        maxhp = 75;
+        contadorki = 11;
         hpactual = maxhp;
-
         mostrarki();
         setMaxhp();
     }
 
     public void setsumaHpActual(View vista){
-        int suma;
         TextView actualhptext = (TextView) findViewById(R.id.contadorActualHp);
-        EditText hpsuma = (EditText) findViewById(R.id.dañocuratextbox);
-        String hsuma = hpsuma.getText().toString();
-        if(hsuma == null){
-            suma = 0;
-        }else{
-            suma = Integer.parseInt(hsuma);
-            hpactual = hpactual+suma;
+        EditText hpsuma;
+        if((EditText) findViewById(R.id.dañocuratextbox) == null){
+        }else {
+            hpsuma = (EditText) findViewById(R.id.dañocuratextbox);
+            Integer hsuma = Integer.parseInt(hpsuma.getText().toString());
+            hpactual = hpactual + hsuma;
             hpsuma.setText("");
             actualhptext.setText("Hp= " + hpactual);
         }
@@ -75,7 +73,6 @@ public class MainActivity extends Activity {
         setMaxhp();
     }
 
-
     public void mostrarki() {
         TextView resultadoki = (TextView) findViewById(R.id.contadorkitexto);
         resultadoki.setText("Ki= " + contadorki);
@@ -84,24 +81,27 @@ public class MainActivity extends Activity {
     public void botondado20(View vista) {
 
         int random = dado20();
-        int suma = random + 8;
+        int suma = random + 11;
         TextView resultado20 = (TextView) findViewById(R.id.dado20texto);
-        resultado20.setText(random + "+5Dex+3Proficiency=" + suma);
+        resultado20.setText(random + "+7Strength + 4 Proficiency=" + suma);
+        playAudioDice();
     }
 
     public void botondado8(View vista) {
-        int random = dado8();
-        int suma = random + 5;
+        int random8 = dado8();
+        int random6 = dado6();
+        int suma = random8 + 7 + random6;
         TextView resultado8 = (TextView) findViewById(R.id.dado8texto);
-        resultado8.setText(random + " +5Dex= " + suma);
+        resultado8.setText(random8+"BludgeoningDamage+"+random6+"IceDamage"+" +7Strength =" + suma+ "Damage");
+        playAudioSlap();
     }
 
-    public void botondado6(View vista) {
+   /* public void botondado6(View vista) {
         int random = dado6();
-        int suma = random + 5;
+        int suma = random + 7;
         TextView resultado6 = (TextView) findViewById(R.id.dado6texto);
-        resultado6.setText(random + " +5Dex= " + suma);
-    }
+        resultado6.setText(random + " + 7Strength= " + suma);
+    }*/
 
     public static int dado20() {
         int random20 = ThreadLocalRandom.current().nextInt(1, 21);
@@ -116,5 +116,14 @@ public class MainActivity extends Activity {
     public static int dado6() {
         int random6 = ThreadLocalRandom.current().nextInt(1, 7);
         return random6;
+    }
+
+    public void playAudioSlap(){
+        mplayer = MediaPlayer.create(this,R.raw.slap);
+        mplayer.start();
+    }
+    public void playAudioDice(){
+        mplayer = MediaPlayer.create(this,R.raw.dice);
+        mplayer.start();
     }
 }
