@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:id="@+id/contadorkitexto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="260dp"
+        android:text="KI="
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+
+    <Button
+        android:id="@+id/sumaki"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/dado20button"
+        android:layout_marginBottom="223dp"
+        android:onClick="incrementaki"
+        android:text="+" />
+
+    <Button
+        android:id="@+id/restaki"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/sumaki"
+        android:layout_toEndOf="@+id/contadorkitexto"
+        android:onClick="decrementaki"
+        android:text="-" />
+
+
+    <Button
+        android:id="@+id/dado20button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="150dp"
+        android:layout_marginStart="16dp"
+        android:onClick="botondado20"
+        android:text="Dado20" />
+
+    <TextView
+        android:id="@+id/dado20texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dado20button"
+        android:layout_toEndOf="@+id/contadorkitexto"
+        android:text="5Dex+3Proficiency"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/dado8button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/sumaki"
+        android:layout_marginBottom="88dp"
+        android:onClick="botondado8"
+        android:text="Dado8" />
+
+    <TextView
+        android:id="@+id/dado8texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dado8button"
+        android:layout_alignStart="@+id/dado20texto"
+        android:text="+5Dex"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/dado6button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/sumaki"
+        android:layout_marginBottom="23dp"
+        android:onClick="botondado6"
+        android:text="Dado6" />
+
+    <TextView
+        android:id="@+id/dado6texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dado6button"
+        android:layout_alignStart="@+id/dado20texto"
+        android:text="+5Dex"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/contadorMaxHp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/contadorkitexto"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="27dp"
+        android:text="Max HP = "
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:id="@+id/contadorActualHp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/sumaki"
+        android:layout_marginTop="80dp"
+        android:text="HP="
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <Button
+        android:id="@+id/sumaMaxHpButton"
+        android:layout_width="66dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/contadorMaxHp"
+        android:layout_toEndOf="@+id/restaki"
+        android:onClick="incrementaMaxHp"
+        android:text="+" />
+
+    <Button
+        android:id="@+id/restaMaxHpButton"
+        android:layout_width="68dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/contadorMaxHp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="11dp"
+        android:onClick="decrementaMaxHp"
+        android:text="-" />
+
+    <EditText
+        android:id="@+id/dañocuratextbox"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contadorActualHp"
+        android:layout_toEndOf="@+id/contadorActualHp"
+        android:ems="10"
+        android:hint="daño/cura"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/sumaCurrentHpButton"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_alignEnd="@+id/sumaki"
+        android:layout_below="@+id/dañocuratextbox"
+        android:onClick="setsumaHpActual"
+        android:text="+" />
+
+    <Button
+        android:id="@+id/restaCurrentHpButton"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/dañocuratextbox"
+        android:layout_toEndOf="@+id/contadorkitexto"
+        android:onClick="setrestaHpActual"
+        android:text="-" />
+
+
+</RelativeLayout>
