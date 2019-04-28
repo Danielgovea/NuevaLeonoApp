@@ -3,6 +3,7 @@ package com.example.leonoapp;
 import android.app.Activity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class MainActivity extends Activity {
+
     public MediaPlayer mplayer;
     public int contadorki;
     public int maxhp;
@@ -29,7 +31,8 @@ public class MainActivity extends Activity {
     public void setsumaHpActual(View vista){
         TextView actualhptext = (TextView) findViewById(R.id.contadorActualHp);
         EditText hpsuma;
-        if((EditText) findViewById(R.id.dañocuratextbox) == null){
+
+        if((EditText)findViewById(R.id.dañocuratextbox) == null){
         }else {
             hpsuma = (EditText) findViewById(R.id.dañocuratextbox);
             Integer hsuma = Integer.parseInt(hpsuma.getText().toString());
@@ -42,6 +45,7 @@ public class MainActivity extends Activity {
     public void setrestaHpActual(View vista){
         TextView actualhptext = (TextView) findViewById(R.id.contadorActualHp);
         EditText hpresta = (EditText) findViewById(R.id.dañocuratextbox);
+        Log.i("info", hpresta.getText().toString());
         int resta = Integer.parseInt(hpresta.getText().toString());
         hpactual = hpactual-resta;
         hpresta.setText("");
