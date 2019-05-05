@@ -1,6 +1,8 @@
 package com.example.leonoapp;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,7 +13,7 @@ import android.widget.TextView;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class MainActivity extends Activity {
-
+    public SharedPreferences sharedPreferences;
     public MediaPlayer mplayer;
     public int contadorki;
     public int maxhp;
@@ -22,16 +24,19 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sharedPreferences = this.getSharedPreferences("com.example.leonoapp", Context.MODE_PRIVATE);
         maxhp = 75;
         danototal = 0;
-        contadorki = 12;
-        hpactual = maxhp;
+        contadorki = sharedPreferences.getInt("actualki", 0);
+        hpactual = sharedPreferences.getInt("actualhp", 0);
         mostrarki();
         setMaxhp();
         setDanoTotal();
+        setActualHp();
     }
 
     public void setsumaHpActual(View vista){
+
         TextView actualhptext = (TextView) findViewById(R.id.contadorActualHp);
         EditText hpsuma = (EditText) findViewById(R.id.dañocuratextbox);
         if(hpsuma.getText().toString().equals(null) || hpsuma.getText().toString().equals("") ){
@@ -41,6 +46,7 @@ public class MainActivity extends Activity {
             hpactual = hpactual + hsuma;
             hpsuma.setText("");
             actualhptext.setText("Hp= " + hpactual);
+            sharedPreferences.edit().putInt("actualhp", hpactual).apply();
         }
     }
 
@@ -54,6 +60,7 @@ public class MainActivity extends Activity {
             hpactual = hpactual - resta;
             hpresta.setText("");
             actualhptext.setText("Hp= " + hpactual);
+            sharedPreferences.edit().putInt("actualhp", hpactual).apply();
         }
     }
 
@@ -65,15 +72,19 @@ public class MainActivity extends Activity {
         TextView danototaltext = (TextView) findViewById(R.id.danototal);
         danototaltext.setText("Daño Total= " + danototal);
     }
+        public void setActualHp(){
+        TextView actualHpText = (TextView) findViewById(R.id.contadorActualHp);
+        actualHpText.setText("Hp= " + hpactual);
+        }
 
 
     public void incrementaki(View vista) {
-        contadorki++;
+        sharedPreferences.edit().putInt("actualki",++contadorki).apply();
         mostrarki();
     }
 
     public void decrementaki(View vista) {
-        contadorki--;
+        sharedPreferences.edit().putInt("actualki",--contadorki).apply();
         mostrarki();
     }
 
