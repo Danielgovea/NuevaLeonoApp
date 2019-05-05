@@ -16,25 +16,27 @@ public class MainActivity extends Activity {
     public int contadorki;
     public int maxhp;
     public int hpactual;
+    public int danototal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         maxhp = 75;
-        contadorki = 11;
+        danototal = 0;
+        contadorki = 12;
         hpactual = maxhp;
         mostrarki();
         setMaxhp();
+        setDanoTotal();
     }
 
     public void setsumaHpActual(View vista){
         TextView actualhptext = (TextView) findViewById(R.id.contadorActualHp);
-        EditText hpsuma;
-
-        if((EditText)findViewById(R.id.dañocuratextbox) == null){
+        EditText hpsuma = (EditText) findViewById(R.id.dañocuratextbox);
+        if(hpsuma.getText().toString().equals(null) || hpsuma.getText().toString().equals("") ){
+             actualhptext.setText("Hp= " + hpactual);
         }else {
-            hpsuma = (EditText) findViewById(R.id.dañocuratextbox);
             Integer hsuma = Integer.parseInt(hpsuma.getText().toString());
             hpactual = hpactual + hsuma;
             hpsuma.setText("");
@@ -45,17 +47,25 @@ public class MainActivity extends Activity {
     public void setrestaHpActual(View vista){
         TextView actualhptext = (TextView) findViewById(R.id.contadorActualHp);
         EditText hpresta = (EditText) findViewById(R.id.dañocuratextbox);
-        Log.i("info", hpresta.getText().toString());
-        int resta = Integer.parseInt(hpresta.getText().toString());
-        hpactual = hpactual-resta;
-        hpresta.setText("");
-        actualhptext.setText("Hp= " + hpactual);
+        if(hpresta.getText().toString().equals(null) || hpresta.getText().toString().equals("") ){
+            actualhptext.setText("Hp= " + hpactual);
+        }else {
+            Integer resta = Integer.parseInt(hpresta.getText().toString());
+            hpactual = hpactual - resta;
+            hpresta.setText("");
+            actualhptext.setText("Hp= " + hpactual);
+        }
     }
 
     public void setMaxhp(){
         TextView maxhptext = (TextView) findViewById(R.id.contadorMaxHp);
         maxhptext.setText("MaxHp= " + maxhp);
     }
+    public void setDanoTotal(){
+        TextView danototaltext = (TextView) findViewById(R.id.danototal);
+        danototaltext.setText("Daño Total= " + danototal);
+    }
+
 
     public void incrementaki(View vista) {
         contadorki++;
@@ -97,7 +107,16 @@ public class MainActivity extends Activity {
         int suma = random8 + 7 + random6;
         TextView resultado8 = (TextView) findViewById(R.id.dado8texto);
         resultado8.setText(random8+"BludgeoningDamage+"+random6+"IceDamage"+" +7Strength =" + suma+ "Damage");
+        danototal = danototal + suma;
+        setDanoTotal();
         playAudioSlap();
+    }
+
+
+
+    public void clear(View view){
+        danototal = 0;
+        setDanoTotal();
     }
 
    /* public void botondado6(View vista) {

@@ -13,28 +13,77 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="260dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="137dp"
         android:text="@string/contador_ki_texto"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
 
     <Button
-        android:id="@+id/sumaki"
+        android:id="@+id/restaCurrentHpButton"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="640dp"
+        android:onClick="setrestaHpActual"
+        android:text="@string/decrementa_ki" />
+
+    <EditText
+        android:id="@+id/dañocuratextbox"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="13dp"
+        android:ems="10"
+        android:hint="@string/daño_cura"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/sumaCurrentHpButton"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="93dp"
+        android:layout_marginBottom="640dp"
+        android:onClick="setsumaHpActual"
+        android:text="@string/incrementa_ki" />
+
+    <TextView
+        android:id="@+id/contadorActualHp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="199dp"
+        android:layout_marginTop="19dp"
+        android:text="@string/contador_actual_hp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <Button
+        android:id="@+id/sumaki"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/dado20button"
-        android:layout_marginBottom="223dp"
+        android:layout_marginStart="-4dp"
+        android:layout_marginEnd="325dp"
+        android:layout_marginBottom="518dp"
         android:onClick="incrementaki"
         android:text="@string/incrementa_ki" />
 
     <Button
         android:id="@+id/restaki"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/sumaki"
-        android:layout_toEndOf="@+id/contadorkitexto"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="264dp"
+        android:layout_marginBottom="518dp"
         android:onClick="decrementaki"
         android:text="@string/decrementa_ki" />
 
@@ -43,40 +92,52 @@
         android:id="@+id/dado20button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="150dp"
-        android:layout_marginStart="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginBottom="377dp"
         android:onClick="botondado20"
         android:text="@string/dado_20" />
 
     <TextView
         android:id="@+id/dado20texto"
-        android:layout_width="wrap_content"
+        android:layout_width="273dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/dado20button"
-        android:layout_toEndOf="@+id/contadorkitexto"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="393dp"
+        android:layout_toEndOf="@+id/dado20button"
         android:text="@string/dado_20_texto"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/dado8texto"
+        android:layout_width="279dp"
+        android:layout_height="68dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginEnd="14dp"
+
+        android:layout_marginBottom="297dp"
+        android:layout_toEndOf="@+id/dado8button"
+        android:text="@string/dado_texto_prof"
         android:textSize="18sp" />
 
     <Button
         android:id="@+id/dado8button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/sumaki"
-        android:layout_marginBottom="88dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginBottom="321dp"
         android:onClick="botondado8"
         android:text="@string/dado_8" />
 
-    <TextView
-        android:id="@+id/dado8texto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/dado8button"
-        android:layout_alignStart="@+id/dado20texto"
-        android:text="@string/dado_texto_prof"
-        android:textSize="18sp" />
+
 
    <!-- <Button
         android:id="@+id/dado6button"
@@ -101,68 +162,67 @@
         android:id="@+id/contadorMaxHp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/contadorkitexto"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="27dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="292dp"
         android:text="@string/contador_max_hp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-    <TextView
-        android:id="@+id/contadorActualHp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/sumaki"
-        android:layout_marginTop="80dp"
-        android:text="@string/contador_actual_hp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <Button
         android:id="@+id/sumaMaxHpButton"
-        android:layout_width="66dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/contadorMaxHp"
-        android:layout_toEndOf="@+id/restaki"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="325dp"
+        android:layout_marginBottom="641dp"
         android:onClick="incrementaMaxHp"
         android:text="@string/incrementa_ki" />
 
     <Button
         android:id="@+id/restaMaxHpButton"
-        android:layout_width="68dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/contadorMaxHp"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="11dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="263dp"
+        android:layout_marginBottom="641dp"
         android:onClick="decrementaMaxHp"
         android:text="@string/decrementa_ki" />
 
-    <EditText
-        android:id="@+id/dañocuratextbox"
-        android:layout_width="96dp"
+    <TextView
+        android:id="@+id/dadosText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/contadorActualHp"
-        android:layout_toEndOf="@+id/contadorActualHp"
-        android:ems="10"
-        android:hint="@string/daño_cura"
-        android:inputType="number" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="318dp"
+        android:layout_marginBottom="439dp"
+        android:text="@string/dados"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:id="@+id/danototal"
+        android:layout_width="198dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="186dp"
+        android:layout_marginBottom="249dp"
+        android:text="@string/dano_total"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <Button
-        android:id="@+id/sumaCurrentHpButton"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:layout_alignEnd="@+id/sumaki"
-        android:layout_below="@+id/dañocuratextbox"
-        android:onClick="setsumaHpActual"
-        android:text="@string/incrementa_ki" />
-
-    <Button
-        android:id="@+id/restaCurrentHpButton"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/dañocuratextbox"
-        android:layout_toEndOf="@+id/contadorkitexto"
-        android:onClick="setrestaHpActual"
-        android:text="@string/decrementa_ki" />
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="237dp"
+        android:onClick="clear"
+        android:text="@string/clear" />
 
 
 </RelativeLayout>

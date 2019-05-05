@@ -11,4 +11,7 @@
     <string name="contador_max_hp">Max HP =</string>
     <string name="contador_actual_hp">HP=</string>
     <string name="daño_cura">Daño/Cura</string>
+    <string name="dados">Dados</string>
+    <string name="clear">Clear</string>
+    <string name="dano_total">Daño Total=</string>
 </resources>
